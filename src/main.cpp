@@ -6,6 +6,10 @@ int my_integers[6] = { 1,2,3,4,5 };
 char my_char[6] = { 'a', 'b', 'c', 'd', 'e' };
 
 // lecture 3
+const int totalStates = 10;
+const int ledPin = 7;
+int ledState[totalStates] = { LOW, HIGH, LOW, HIGH, LOW, HIGH, LOW, HIGH, LOW, HIGH };
+int ledDuration[totalStates] = { 200, 300, 400, 200, 200, 300, 400, 200, 200, 200 };
 
 void setup() {
   Serial.begin(9600);
@@ -54,10 +58,16 @@ void setup() {
   }
 
   // Lecture 3
+  pinMode(ledPin, OUTPUT);
 
 }
 
 void loop() {
+  for (int i = 0; i < totalStates; i++)
+  {
+    digitalWrite(ledPin, ledState[i]);
+    delay(ledDuration[i]);
+  }
 
 }
 
